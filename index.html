@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fair Automobile — Authorised Importer in Mauritius</title>
+  <meta name="description" content="Fair Automobile — Authorised and Licensed Importer of vehicles in Mauritius. Used & reconditioned vehicles, on-spot financing, bespoke orders." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <!-- Top notice (optional) -->
+  <div class="topline">
+    <div class="container topline__inner">
+      <span class="pill pill--soft">Mauritius</span>
+      <span class="topline__text">Authorised & Licensed Importer • Used & Reconditioned • On-spot Financing • Bespoke Orders</span>
+      <a class="topline__link" href="#contact">Get a quote</a>
+    </div>
+  </div>
+
+  <!-- Sticky header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="brand" href="#top" aria-label="Fair Automobile">
+        <!-- Replace with your logo -->
+        <img class="brand__logo" src="./assets/fair-logo.png" alt="Fair Automobile logo">
+        <span class="brand__name">Fair Automobile</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="#inventory">Inventory</a>
+        <a class="nav__link" href="#tools">Shopping Tools</a>
+        <a class="nav__link" href="#financing">Financing</a>
+        <a class="nav__link" href="#bespoke">Bespoke Orders</a>
+        <a class="nav__link" href="#contact">Contact</a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--ghost" href="mailto:sales@fairauto.net">Email</a>
+        <a class="btn btn--primary" href="https://wa.me/23052577027" target="_blank" rel="noreferrer">WhatsApp</a>
+        <button class="menuBtn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <div class="drawer__panel">
+        <div class="drawer__top">
+          <span class="drawer__title">Menu</span>
+          <button class="drawer__close" id="drawerClose" aria-label="Close menu">✕</button>
+        </div>
+        <div class="drawer__links">
+          <a href="#inventory">Inventory</a>
+          <a href="#tools">Shopping Tools</a>
+          <a href="#financing">Financing</a>
+          <a href="#bespoke">Bespoke Orders</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="drawer__cta">
+          <a class="btn btn--primary btn--full" href="https://wa.me/23052577027" target="_blank" rel="noreferrer">Message on WhatsApp</a>
+          <a class="btn btn--ghost btn--full" href="mailto:sales@fairauto.net">sales@fairauto.net</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO (Toyota-style cinematic) -->
+    <section class="hero">
+      <div class="hero__media" aria-hidden="true">
+        <!-- Replace with your hero image -->
+        <img src="./assets/hero-landcruiser.jpg" alt="" />
+        <div class="hero__vignette"></div>
+        <div class="hero__gradient"></div>
+      </div>
+
+      <div class="container hero__content">
+        <div class="hero__stack reveal">
+          <div class="hero__kickers">
+            <span class="pill">Authorised Importer</span>
+            <span class="pill pill--soft">Nouvelle France</span>
+          </div>
+
+          <h1 class="hero__title">
+            Find your next vehicle — <span class="nowrap">the clean way.</span>
+          </h1>
+
+          <p class="hero__sub">
+            Fair Automobile is an authorised and licensed importer in Mauritius.
+            We source <strong>used & reconditioned</strong> vehicles, provide <strong>on-spot financing</strong>,
+            and handle <strong>bespoke orders</strong> end-to-end.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#inventory">Explore Inventory</a>
+            <a class="btn btn--ghost" href="#contact">Request a Quote</a>
+          </div>
+
+          <div class="hero__stats">
+            <div class="stat">
+              <div class="stat__value">On-spot</div>
+              <div class="stat__label">Financing options</div>
+            </div>
+            <div class="stat">
+              <div class="stat__value">Bespoke</div>
+              <div class="stat__label">Imports on request</div>
+            </div>
+            <div class="stat">
+              <div class="stat__value">Trusted</div>
+              <div class="stat__label">Reconditioned supply</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="scrollHint" href="#inventory" aria-label="Scroll to inventory">
+        <span class="scrollHint__dot"></span>
+        <span class="scrollHint__text">Scroll</span>
+      </a>
+    </section>
+
+    <!-- EXPLORE ALL VEHICLES (Toyota-style carousel cards) -->
+    <section class="section" id="inventory">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2 class="section__title">Explore Inventory</h2>
+          <p class="section__desc">Popular picks + fresh arrivals. Tap a card to enquire instantly.</p>
+        </div>
+
+        <div class="tabs reveal" role="tablist" aria-label="Inventory categories">
+          <button class="tab is-active" data-tab="all" role="tab" aria-selected="true">All</button>
+          <button class="tab" data-tab="suv" role="tab" aria-selected="false">SUVs</button>
+          <button class="tab" data-tab="sedan" role="tab" aria-selected="false">Sedans</button>
+          <button class="tab" data-tab="truck" role="tab" aria-selected="false">Trucks / 4x4</button>
+          <button class="tab" data-tab="hybrid" role="tab" aria-selected="false">Hybrid</button>
+          <button class="tab" data-tab="upcoming" role="tab" aria-selected="false">Bespoke</button>
+        </div>
+
+        <div class="carousel reveal" data-carousel="inventory">
+          <button class="carousel__btn" type="button" data-dir="-1" aria-label="Previous" aria-controls="invTrack">‹</button>
+
+          <div class="carousel__track" id="invTrack">
+            <!-- Card 1 -->
+            <article class="vehicleCard" data-type="suv hybrid">
+              <div class="vehicleCard__media">
+                <img src="./assets/inv-hilux-duo.jpg" alt="4x4 / Pickup selection" />
+                <span class="badge">Hybrid</span>
+              </div>
+              <div class="vehicleCard__body">
+                <div class="vehicleCard__top">
+                  <span class="vehicleCard__year">2021–2024</span>
+                  <h3 class="vehicleCard__title">Family SUV</h3>
+                </div>
+                <p class="vehicleCard__meta">Reconditioned • Warranty options • Ready to view</p>
+                <div class="vehicleCard__cta">
+                  <a class="btn btn--tiny btn--ghost" href="#contact" data-prefill="Family SUV">Enquire</a>
+                  <a class="btn btn--tiny btn--primary" href="https://wa.me/23052577027" target="_blank" rel="noreferrer">WhatsApp</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="vehicleCard" data-type="sedan">
+              <div class="vehicleCard__media">
+                <img src="./assets/inv-corolla.jpg" alt="Hybrid hatch / daily driver" />
+                <span class="badge badge--dark">Value</span>
+              </div>
+              <div class="vehicleCard__body">
+                <div class="vehicleCard__top">
+                  <span class="vehicleCard__year">2018–2023</span>
+                  <h3 class="vehicleCard__title">Daily Sedan</h3>
+                </div>
+                <p class="vehicleCard__meta">Low running costs • Finance available</p>
+                <div class="vehicleCard__cta">
+                  <a class="btn btn--tiny btn--ghost" href="#contact" data-prefill="Daily Sedan">Enquire</a>
+                  <a class="btn btn--tiny btn--primary" href="tel:+23052577027">Call</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="vehicleCard" data-type="truck">
+              <div class="vehicleCard__media">
+                <img src="./assets/inv-gr86-road.jpg" alt="Sports coupe selection" />
+                <span class="badge">4x4</span>
+              </div>
+              <div class="vehicleCard__body">
+                <div class="vehicleCard__top">
+                  <span class="vehicleCard__year">2016–2024</span>
+                  <h3 class="vehicleCard__title">Pickup / 4x4</h3>
+                </div>
+                <p class="vehicleCard__meta">Work-ready • Off-road capable • Sourced to spec</p>
+                <div class="vehicleCard__cta">
+                  <a class="btn btn--tiny btn--ghost" href="#contact" data-prefill="Pickup / 4x4">Enquire</a>
+                  <a class="btn btn--tiny btn--primary" href="https://wa.me/23052577027" target="_blank" rel="noreferrer">WhatsApp</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="vehicleCard" data-type="upcoming">
+              <div class="vehicleCard__media">
+                <img src="./assets/inv-nissan-duo.jpg" alt="Bespoke import selection" />
+                <span class="badge badge--dark">Bespoke</span>
+              </div>
+              <div class="vehicleCard__body">
+                <div class="vehicleCard__top">
+                  <span class="vehicleCard__year">Any year</span>
+                  <h3 class="vehicleCard__title">Import on Request</h3>
+                </div>
+                <p class="vehicleCard__meta">Tell us the model, budget & timeline. We’ll handle the rest.</p>
+                <div class="vehicleCard__cta">
+                  <a class="btn btn--tiny btn--ghost" href="#bespoke">How it works</a>
+                  <a class="btn btn--tiny btn--primary" href="#contact" data-prefill="Bespoke Import Request">Start</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <button class="carousel__btn" type="button" data-dir="1" aria-label="Next" aria-controls="invTrack">›</button>
+        </div>
+
+        <div class="section__actions reveal">
+          <a class="btn btn--ghost" href="#contact" data-prefill="Search Inventory">Search Inventory</a>
+          <a class="btn btn--primary" href="#contact" data-prefill="Vehicle Quote">Request a Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOPPING TOOLS (Toyota-style 4 icons row) -->
+    <section class="section section--tint" id="tools">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2 class="section__title">Shopping Tools</h2>
+          <p class="section__desc">Everything you need to decide fast — with real-world support.</p>
+        </div>
+
+        <div class="toolRow reveal">
+          <a class="tool" href="#contact" data-prefill="Build & Price">
+            <div class="tool__icon">⟡</div>
+            <div class="tool__label">Build & Price</div>
+            <div class="tool__hint">Budget & spec</div>
+          </a>
+          <a class="tool" href="#contact" data-prefill="Search Inventory">
+            <div class="tool__icon">⌕</div>
+            <div class="tool__label">Search Inventory</div>
+            <div class="tool__hint">Fresh arrivals</div>
+          </a>
+          <a class="tool" href="#contact" data-prefill="Special Offers">
+            <div class="tool__icon">◎</div>
+            <div class="tool__label">Special Offers</div>
+            <div class="tool__hint">Value picks</div>
+          </a>
+          <a class="tool" href="#contact" data-prefill="Find Us">
+            <div class="tool__icon">⌁</div>
+            <div class="tool__label">Find Us</div>
+            <div class="tool__hint">Nouvelle France</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIG BANNER (Toyota “Beyond Zero” vibe) -->
+    <section class="banner reveal" id="financing">
+      <div class="banner__media" aria-hidden="true">
+        <img src="./assets/banner-gr86-forest.jpg" alt="" />
+        <div class="banner__overlay"></div>
+      </div>
+      <div class="container banner__content">
+        <div class="banner__kicker">FINANCING</div>
+        <h2 class="banner__title">Drive today. Pay smart.</h2>
+        <p class="banner__desc">
+          Ask about on-spot financing options and trade-in guidance. We’ll help you choose a plan that fits your monthly comfort.
+        </p>
+        <a class="btn btn--primary" href="#contact" data-prefill="Financing enquiry">Check options</a>
+      </div>
+    </section>
+
+    <!-- BESPOKE (clean explanation section) -->
+    <section class="section" id="bespoke">
+      <div class="container">
+        <div class="split reveal">
+          <div class="split__left">
+            <h2 class="section__title">Bespoke Orders</h2>
+            <p class="section__desc">
+              Want something specific? Send the model, year range, budget and color. We source, inspect, import and deliver — with clear updates.
+            </p>
+
+            <div class="steps">
+              <div class="step">
+                <div class="step__num">01</div>
+                <div class="step__body">
+                  <div class="step__title">Tell us what you want</div>
+                  <div class="step__text">Model + budget + must-have features.</div>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step__num">02</div>
+                <div class="step__body">
+                  <div class="step__title">We source & verify</div>
+                  <div class="step__text">Shortlist options and share the best match.</div>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step__num">03</div>
+                <div class="step__body">
+                  <div class="step__title">Import & handover</div>
+                  <div class="step__text">Paperwork + delivery coordination.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="split__cta">
+              <a class="btn btn--primary" href="#contact" data-prefill="Bespoke order request">Start a bespoke order</a>
+              <a class="btn btn--ghost" href="tel:+23052577027">Call 5257 7027</a>
+            </div>
+          </div>
+
+          <div class="split__right">
+            <div class="glassCard">
+              <div class="glassCard__title">Contact</div>
+              <div class="glassCard__row">
+                <span>Phone</span>
+                <a href="tel:+23052577027">5257 7027</a>
+              </div>
+              <div class="glassCard__row">
+                <span>Email</span>
+                <a href="mailto:sales@fairauto.net">sales@fairauto.net</a>
+              </div>
+              <div class="glassCard__row">
+                <span>Location</span>
+                <span>B95, Nouvelle France Link Road</span>
+              </div>
+              <div class="glassCard__divider"></div>
+              <div class="glassCard__note">
+                Prefer WhatsApp? Send a screenshot / model link — we’ll reply with availability and pricing.
+              </div>
+              <a class="btn btn--primary btn--full" href="https://wa.me/23052577027" target="_blank" rel="noreferrer">Message on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED STORIES (Toyota-style 3 cards) -->
+    <section class="section section--tint">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2 class="section__title">Featured</h2>
+          <p class="section__desc">Short reads that help buyers move with confidence.</p>
+        </div>
+
+        <div class="storyGrid reveal">
+          <article class="story">
+            <div class="story__media">
+              <img src="./assets/story-bmw.jpg" alt="Reconditioned showroom vehicle" />
+            </div>
+            <div class="story__body">
+              <div class="story__kicker">GUIDE</div>
+              <h3 class="story__title">How to buy reconditioned with peace of mind</h3>
+              <p class="story__text">What to ask, what to verify, and how to avoid surprises.</p>
+              <a class="story__link" href="#contact" data-prefill="Guide: reconditioned purchase">Get checklist</a>
+            </div>
+          </article>
+
+          <article class="story">
+            <div class="story__media">
+              <img src="./assets/inv-corolla.jpg" alt="Budget-friendly daily driver" />
+            </div>
+            <div class="story__body">
+              <div class="story__kicker">FINANCE</div>
+              <h3 class="story__title">Financing basics: keep monthly comfortable</h3>
+              <p class="story__text">A simple way to align your budget with the right vehicle type.</p>
+              <a class="story__link" href="#contact" data-prefill="Guide: financing basics">Ask options</a>
+            </div>
+          </article>
+
+          <article class="story">
+            <div class="story__media">
+              <img src="./assets/story-landcruiser.jpg" alt="4x4 and off-road capable vehicles" />
+            </div>
+            <div class="story__body">
+              <div class="story__kicker">BESPOKE</div>
+              <h3 class="story__title">Bespoke imports: what we need from you</h3>
+              <p class="story__text">Model, budget, year range — and how we handle the rest.</p>
+              <a class="story__link" href="#contact" data-prefill="Guide: bespoke imports">Start now</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact reveal">
+          <div class="contact__left">
+            <h2 class="section__title">Request a quote</h2>
+            <p class="section__desc">
+              Tell us what you’re after. We’ll reply with availability, pricing, and next steps.
+            </p>
+
+            <div class="contact__mini">
+              <div class="mini">
+                <div class="mini__label">Phone</div>
+                <a class="mini__value" href="tel:+23052577027">5257 7027</a>
+              </div>
+              <div class="mini">
+                <div class="mini__label">Email</div>
+                <a class="mini__value" href="mailto:sales@fairauto.net">sales@fairauto.net</a>
+              </div>
+              <div class="mini">
+                <div class="mini__label">Location</div>
+                <div class="mini__value">B95, Nouvelle France Link Road</div>
+              </div>
+            </div>
+          </div>
+
+          <form class="form" id="quoteForm">
+            <input type="hidden" name="interest" id="interest" value="General enquiry" />
+
+            <label class="field">
+              <span>Name</span>
+              <input name="name" type="text" placeholder="Your name" required />
+            </label>
+
+            <label class="field">
+              <span>Phone / WhatsApp</span>
+              <input name="phone" type="tel" placeholder="e.g. 5xxx xxxx" required />
+            </label>
+
+            <label class="field">
+              <span>What are you looking for?</span>
+              <input name="vehicle" id="vehicleField" type="text" placeholder="Model, year range, budget..." required />
+            </label>
+
+            <label class="field">
+              <span>Notes</span>
+              <textarea name="notes" rows="4" placeholder="Any must-have features, color, timeline, trade-in..."></textarea>
+            </label>
+
+            <div class="form__row">
+              <button class="btn btn--primary btn--full" type="submit">Send via WhatsApp</button>
+              <button class="btn btn--ghost btn--full" type="button" id="emailBtn">Send via Email</button>
+            </div>
+
+            <p class="form__fine">
+              No spam. Just a quick reply with options.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEGA FOOTER (Toyota-style columns) -->
+    <footer class="footer">
+      <div class="container footer__top">
+        <div class="footer__brand">
+          <img class="footer__logo" src="./assets/fair-logo.png" alt="Fair Automobile">
+          <div class="footer__tag">Authorised & Licensed Importer • Mauritius</div>
+        </div>
+
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="TikTok">TikTok</a>
+        </div>
+      </div>
+
+      <div class="container footer__grid">
+        <div class="footerCol">
+          <div class="footerCol__title">Shopping</div>
+          <a href="#inventory">Explore Inventory</a>
+          <a href="#tools">Search & Tools</a>
+          <a href="#financing">Financing</a>
+          <a href="#bespoke">Bespoke Orders</a>
+          <a href="#contact">Request a Quote</a>
+        </div>
+
+        <div class="footerCol">
+          <div class="footerCol__title">Vehicles</div>
+          <a href="#inventory">SUVs</a>
+          <a href="#inventory">Sedans</a>
+          <a href="#inventory">4x4 / Pickup</a>
+          <a href="#inventory">Hybrid</a>
+          <a href="#bespoke">Import on Request</a>
+        </div>
+
+        <div class="footerCol">
+          <div class="footerCol__title">Support</div>
+          <a href="#contact">Contact</a>
+          <a href="tel:+23052577027">Call 5257 7027</a>
+          <a href="mailto:sales@fairauto.net">sales@fairauto.net</a>
+          <a href="#contact" data-prefill="Trade-in enquiry">Trade-in enquiry</a>
+        </div>
+
+        <div class="footerCol">
+          <div class="footerCol__title">Company</div>
+          <a href="#top">About</a>
+          <a href="#bespoke">How we work</a>
+          <a href="#contact">Location</a>
+        </div>
+      </div>
+
+      <div class="container footer__bottom">
+        <div>© <span id="year"></span> Fair Automobile. All rights reserved.</div>
+        <div class="footer__smallLinks">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#contact">Support</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
