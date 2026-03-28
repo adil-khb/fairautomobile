@@ -491,6 +491,64 @@ textarea:focus-visible{
   flex-wrap: wrap;
 }
 
+.vehicleCard--inventory{
+  width: clamp(296px, 25vw, 372px);
+  min-height: 500px;
+  grid-template-columns: minmax(0, 47%) minmax(0, 1fr);
+  border-radius: 30px;
+  box-shadow: 0 20px 40px rgba(17, 19, 24, .08);
+}
+.vehicleCard--inventory .vehicleCard__media{
+  min-height: 100%;
+}
+.vehicleCard--inventory .vehicleCard__body{
+  padding: 22px 22px 24px;
+  gap: 20px;
+}
+.vehicleCard--inventory .vehicleCard__top{
+  gap: 12px;
+}
+.vehicleCard--inventory .vehicleCard__year{
+  font-size: 14px;
+  color: rgba(11,12,15,.58);
+  letter-spacing: -0.01em;
+}
+.vehicleCard--inventory .vehicleCard__title{
+  font-size: clamp(24px, 2vw, 30px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+.vehicleCard--inventory .vehicleCard__meta{
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.vehicleCard--inventory .vehicleCard__cta{
+  display: grid;
+  gap: 12px;
+  margin-top: auto;
+}
+.vehicleCard--inventory .vehicleCard__cta .btn{
+  width: 100%;
+  height: 56px;
+  padding-inline: 18px;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+.vehicleCard--inventory .vehicleCard__cta .btn--ghost{
+  background: #fff;
+}
+.vehicleCard--inventory .badge{
+  top: 18px;
+  left: 18px;
+  height: 38px;
+  padding-inline: 16px;
+  font-size: 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(17, 19, 24, .10);
+}
+
 /* Tools row */
 .toolRow{
   display:grid;
@@ -810,6 +868,10 @@ textarea:focus-visible{
   .vehicleCard{
     width: min(560px, calc(100vw - (var(--pageGutter) * 2) - 8px));
   }
+  .vehicleCard--inventory{
+    width: min(500px, calc(100vw - (var(--pageGutter) * 2) - 8px));
+    min-height: 440px;
+  }
 }
 
 @media (max-width: 720px){
@@ -889,6 +951,27 @@ textarea:focus-visible{
   .vehicleCard__media{
     min-height: 220px;
   }
+  .vehicleCard--inventory{
+    min-height: 0;
+    border-radius: 24px;
+  }
+  .vehicleCard--inventory .vehicleCard__body{
+    padding: 20px 18px 18px;
+    gap: 16px;
+  }
+  .vehicleCard--inventory .vehicleCard__title{
+    font-size: clamp(22px, 7vw, 28px);
+  }
+  .vehicleCard--inventory .vehicleCard__meta{
+    font-size: 14px;
+  }
+  .vehicleCard--inventory .badge{
+    top: 14px;
+    left: 14px;
+    height: 34px;
+    padding-inline: 14px;
+    font-size: 13px;
+  }
   .section__actions .btn,
   .split__cta .btn{
     flex: 1 1 220px;
@@ -944,6 +1027,10 @@ textarea:focus-visible{
   .vehicleCard{
     width: calc(100vw - (var(--pageGutter) * 2));
     border-radius: 18px;
+  }
+  .vehicleCard--inventory .vehicleCard__cta .btn{
+    height: 52px;
+    font-size: 14px;
   }
   .toolRow{
     grid-template-columns: 1fr;
