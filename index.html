@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./styles.css?v=7" />
 </head>
 
 <body>
@@ -133,12 +133,12 @@
         </div>
 
         <div class="tabs reveal" role="tablist" aria-label="Inventory categories">
-          <button class="tab is-active" data-tab="all" role="tab" aria-selected="true">All</button>
-          <button class="tab" data-tab="suv" role="tab" aria-selected="false">SUVs</button>
-          <button class="tab" data-tab="sedan" role="tab" aria-selected="false">Sedans</button>
-          <button class="tab" data-tab="truck" role="tab" aria-selected="false">Trucks / 4x4</button>
-          <button class="tab" data-tab="hybrid" role="tab" aria-selected="false">Hybrid</button>
-          <button class="tab" data-tab="upcoming" role="tab" aria-selected="false">Bespoke</button>
+          <button class="tab is-active" type="button" data-tab="all" role="tab" aria-selected="true">All</button>
+          <button class="tab" type="button" data-tab="suv" role="tab" aria-selected="false">SUVs</button>
+          <button class="tab" type="button" data-tab="sedan" role="tab" aria-selected="false">Sedans</button>
+          <button class="tab" type="button" data-tab="truck" role="tab" aria-selected="false">Trucks / 4x4</button>
+          <button class="tab" type="button" data-tab="hybrid" role="tab" aria-selected="false">Hybrid</button>
+          <button class="tab" type="button" data-tab="upcoming" role="tab" aria-selected="false">Bespoke</button>
         </div>
 
         <div class="carousel reveal" data-carousel="inventory">
@@ -156,7 +156,11 @@
                   <span class="vehicleCard__year">2021–2024</span>
                   <h3 class="vehicleCard__title">Family SUV</h3>
                 </div>
-                <p class="vehicleCard__meta">Reconditioned • Warranty options • Ready to view</p>
+                <div class="vehicleCard__meta" aria-label="Family SUV highlights">
+                  <span>Reconditioned</span>
+                  <span>Warranty options</span>
+                  <span>Ready to view</span>
+                </div>
                 <div class="vehicleCard__cta">
                   <a class="btn btn--tiny btn--ghost" href="#contact" data-prefill="Family SUV">Enquire</a>
                   <a class="btn btn--tiny btn--primary" href="https://wa.me/23052577027" target="_blank" rel="noreferrer">WhatsApp</a>
@@ -175,7 +179,10 @@
                   <span class="vehicleCard__year">2018–2023</span>
                   <h3 class="vehicleCard__title">Daily Sedan</h3>
                 </div>
-                <p class="vehicleCard__meta">Low running costs • Finance available</p>
+                <div class="vehicleCard__meta" aria-label="Daily Sedan highlights">
+                  <span>Low running costs</span>
+                  <span>Finance available</span>
+                </div>
                 <div class="vehicleCard__cta">
                   <a class="btn btn--tiny btn--ghost" href="#contact" data-prefill="Daily Sedan">Enquire</a>
                   <a class="btn btn--tiny btn--primary" href="tel:+23052577027">Call</a>
@@ -194,7 +201,11 @@
                   <span class="vehicleCard__year">2016–2024</span>
                   <h3 class="vehicleCard__title">Pickup / 4x4</h3>
                 </div>
-                <p class="vehicleCard__meta">Work-ready • Off-road capable • Sourced to spec</p>
+                <div class="vehicleCard__meta" aria-label="Pickup and 4x4 highlights">
+                  <span>Work-ready</span>
+                  <span>Off-road capable</span>
+                  <span>Sourced to spec</span>
+                </div>
                 <div class="vehicleCard__cta">
                   <a class="btn btn--tiny btn--ghost" href="#contact" data-prefill="Pickup / 4x4">Enquire</a>
                   <a class="btn btn--tiny btn--primary" href="https://wa.me/23052577027" target="_blank" rel="noreferrer">WhatsApp</a>
@@ -213,7 +224,10 @@
                   <span class="vehicleCard__year">Any year</span>
                   <h3 class="vehicleCard__title">Import on Request</h3>
                 </div>
-                <p class="vehicleCard__meta">Tell us the model, budget & timeline. We’ll handle the rest.</p>
+                <div class="vehicleCard__meta" aria-label="Import on Request highlights">
+                  <span>Model, budget & timeline</span>
+                  <span>Handled end-to-end</span>
+                </div>
                 <div class="vehicleCard__cta">
                   <a class="btn btn--tiny btn--ghost" href="#bespoke">How it works</a>
                   <a class="btn btn--tiny btn--primary" href="#contact" data-prefill="Bespoke Import Request">Start</a>
@@ -518,6 +532,6 @@
     </footer>
   </main>
 
-  <script src="./script.js"></script>
+  <script src="./script.js?v=7"></script>
 </body>
 </html>

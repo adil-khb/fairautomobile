@@ -91,7 +91,7 @@ carousels.forEach((carousel) => {
 
 // ---- Tabs filter (inventory) ----
 const tabs = document.querySelectorAll(".tab");
-const cards = document.querySelectorAll(".vehicleCard");
+const cards = document.querySelectorAll("#invTrack .vehicleCard");
 tabs.forEach((t) => {
   t.addEventListener("click", () => {
     tabs.forEach((x) => {
@@ -106,6 +106,7 @@ tabs.forEach((t) => {
       const type = (card.getAttribute("data-type") || "").toLowerCase();
       const show = key === "all" ? true : type.includes(key);
       card.hidden = !show;
+      card.style.display = show ? "" : "none";
     });
 
     // reset scroll
