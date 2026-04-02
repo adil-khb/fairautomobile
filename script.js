@@ -1,15 +1,20 @@
 // ---- Reveal on scroll (Toyota-like fade between sections) ----
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const reveals = document.querySelectorAll(".reveal");
-const io = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) e.target.classList.add("is-visible");
-    });
-  },
-  { threshold: 0.12 }
-);
-reveals.forEach((el) => io.observe(el));
+
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add("is-visible");
+      });
+    },
+    { threshold: 0.12 }
+  );
+  reveals.forEach((el) => io.observe(el));
+} else {
+  reveals.forEach((el) => el.classList.add("is-visible"));
+}
 
 // ---- Year in footer ----
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -69,53 +74,183 @@ function updateCarouselButtons(carousel, track) {
   });
 }
 
+function getClosestCardOffset(track, direction) {
+  const visibleCards = getVisibleCards(track);
+
+  if (!visibleCards.length) {
+    return track.scrollLeft;
+  }
+
+  const trackRect = track.getBoundingClientRect();
+  const currentLeft = track.scrollLeft;
+  const cardPositions = visibleCards.map((card) => {
+    const rect = card.getBoundingClientRect();
+    const left = Math.round(currentLeft + (rect.left - trackRect.left));
+    return {
+      left,
+      distance: left - currentLeft,
+    };
+  });
+
+  const candidateCards = cardPositions.filter((card) => (direction > 0 ? card.distance > 12 : card.distance < -12));
+
+  if (!candidateCards.length) {
+    return direction > 0
+      ? Math.max(0, track.scrollWidth - track.clientWidth)
+      : 0;
+  }
+
+  const nextCard = direction > 0
+    ? candidateCards.reduce((closest, card) => (card.distance < closest.distance ? card : closest))
+    : candidateCards.reduce((closest, card) => (card.distance > closest.distance ? card : closest));
+
+  return nextCard.left;
+}
+
+function scrollTrackTo(track, left, behavior = prefersReducedMotion ? "auto" : "smooth") {
+  const maxScrollLeft = Math.max(0, track.scrollWidth - track.clientWidth);
+  const clampedLeft = Math.max(0, Math.min(left, maxScrollLeft));
+
+  if (behavior === "auto") {
+    track.scrollLeft = clampedLeft;
+    return;
+  }
+
+  track.scrollTo({ left: clampedLeft, behavior });
+
+  window.setTimeout(() => {
+    if (Math.abs(track.scrollLeft - clampedLeft) > 4) {
+      track.scrollLeft = clampedLeft;
+    }
+  }, 420);
+}
+
+function syncCarouselState(carousel, track) {
+  window.requestAnimationFrame(() => updateCarouselButtons(carousel, track));
+}
+
 carousels.forEach((carousel) => {
   const track = carousel.querySelector(".carousel__track");
 
   if (!track) return;
 
-  const syncButtons = () => updateCarouselButtons(carousel, track);
+  const syncButtons = () => syncCarouselState(carousel, track);
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+  let isDragging = false;
 
   carousel.querySelectorAll(".carousel__btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const dir = Number(btn.getAttribute("data-dir") || "1");
-      const amount = getCarouselStep(track);
-      track.scrollBy({ left: dir * amount, behavior: prefersReducedMotion ? "auto" : "smooth" });
+      const targetLeft = getClosestCardOffset(track, dir);
+      const fallbackAmount = getCarouselStep(track);
+      const nextLeft = Math.abs(targetLeft - track.scrollLeft) > 8
+        ? targetLeft
+        : track.scrollLeft + (dir * fallbackAmount);
+
+      scrollTrackTo(track, nextLeft);
     });
   });
 
   track.addEventListener("scroll", syncButtons, { passive: true });
   window.addEventListener("resize", syncButtons);
+  if ("ResizeObserver" in window) {
+    const resizeObserver = new ResizeObserver(syncButtons);
+    resizeObserver.observe(track);
+  }
+
+  track.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+
+    isDragging = true;
+    dragStartX = event.clientX;
+    dragStartScroll = track.scrollLeft;
+    track.classList.add("is-dragging");
+    track.setPointerCapture?.(event.pointerId);
+  });
+
+  track.addEventListener("pointermove", (event) => {
+    if (!isDragging) return;
+
+    const delta = event.clientX - dragStartX;
+    track.scrollLeft = dragStartScroll - delta;
+  });
+
+  const stopDragging = (event) => {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove("is-dragging");
+    track.releasePointerCapture?.(event.pointerId);
+    syncButtons();
+  };
+
+  track.addEventListener("pointerup", stopDragging);
+  track.addEventListener("pointercancel", stopDragging);
+  track.addEventListener("pointerleave", (event) => {
+    if (event.pointerType === "mouse") {
+      stopDragging(event);
+    }
+  });
+
   syncButtons();
 });
 
 // ---- Tabs filter (inventory) ----
 const tabs = document.querySelectorAll(".tab");
 const cards = document.querySelectorAll("#invTrack .vehicleCard");
-tabs.forEach((t) => {
-  t.addEventListener("click", () => {
-    tabs.forEach((x) => {
-      x.classList.remove("is-active");
-      x.setAttribute("aria-selected", "false");
-    });
-    t.classList.add("is-active");
-    t.setAttribute("aria-selected", "true");
 
-    const key = t.getAttribute("data-tab");
-    cards.forEach((card) => {
-      const type = (card.getAttribute("data-type") || "").toLowerCase();
-      const show = key === "all" ? true : type.includes(key);
-      card.hidden = !show;
-      card.style.display = show ? "" : "none";
-    });
+function applyInventoryFilter(tab) {
+  if (!tab) return;
 
-    // reset scroll
-    const track = document.getElementById("invTrack");
-    if (track) {
-      track.scrollTo({ left: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
-      const carousel = track.closest("[data-carousel]");
-      if (carousel) updateCarouselButtons(carousel, track);
-    }
+  tabs.forEach((item) => {
+    item.classList.remove("is-active");
+    item.setAttribute("aria-selected", "false");
+    item.tabIndex = -1;
+  });
+
+  tab.classList.add("is-active");
+  tab.setAttribute("aria-selected", "true");
+  tab.tabIndex = 0;
+
+  const key = (tab.getAttribute("data-tab") || "all").toLowerCase();
+  cards.forEach((card) => {
+    const tokens = (card.getAttribute("data-type") || "")
+      .toLowerCase()
+      .split(/\s+/)
+      .filter(Boolean);
+    const show = key === "all" || tokens.includes(key);
+    card.hidden = !show;
+  });
+
+  const track = document.getElementById("invTrack");
+  if (!track) return;
+
+  scrollTrackTo(track, 0, "auto");
+  const carousel = track.closest("[data-carousel]");
+  if (!carousel) return;
+
+  syncCarouselState(carousel, track);
+  window.requestAnimationFrame(() => syncCarouselState(carousel, track));
+}
+
+tabs.forEach((tab, index) => {
+  tab.tabIndex = index === 0 ? 0 : -1;
+  tab.addEventListener("click", () => applyInventoryFilter(tab));
+  tab.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+
+    const tabList = Array.from(tabs);
+    const currentIndex = tabList.indexOf(tab);
+    let nextIndex = currentIndex;
+
+    if (event.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabList.length;
+    if (event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabList.length) % tabList.length;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = tabList.length - 1;
+
+    tabList[nextIndex].focus();
+    applyInventoryFilter(tabList[nextIndex]);
   });
 });
 
